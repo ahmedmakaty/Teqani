@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Teqani</string>
     <string name="main_title">Teqani</string>
-    <string name="hint_mobile">رقم الجوال</string>
-    <string name="hint_name">الاسم</string>
+    <string name="hint_mobile">Mobile Number</string>
+    <string name="login_continue">Continue without logging in</string>
+    <string name="hint_name">Name</string>
+    <string name="signin">Sign In</string>
+    <string name="new_user">New User</string>
+    <string name="signin_btn">Submit</string>
+    <string name="skip">Skip</string>
+    <string name="tutorial_header_1">Your device needs out help!</string>
+    <string name="tutorial_description_1">Call us please, we beg you</string>
+    <string name="default_Country">SA</string>
 </resources>

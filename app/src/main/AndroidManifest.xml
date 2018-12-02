@@ -13,14 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.teqani.base.presentation.screens.SplashScreen.SplashActivity">
+        <activity
+            android:name="com.example.teqani.base.presentation.screens.SplashScreen.SplashActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.teqani.base.presentation.screens.TutorialScreen.TutorialActivity"></activity>
+        <activity
+            android:name="com.example.teqani.base.presentation.screens.TutorialScreen.TutorialActivity"
+            android:noHistory="true"></activity>
         <activity android:name="com.example.teqani.base.presentation.screens.SignInScreen.SignInActivity"></activity>
         <activity android:name="com.example.teqani.base.presentation.screens.RegisterScreen.RegisterActivity"></activity>
     </application>

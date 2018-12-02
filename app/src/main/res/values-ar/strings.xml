@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Teqani</string>
     <string name="main_title">Teqani</string>
-    <string name="hint_mobile">Mobile Number</string>
+    <string name="hint_mobile">رقم الجوال</string>
+    <string name="hint_name">الاسم</string>
+    <string name="signin">دخول</string>
+    <string name="new_user">جديد</string>
+    <string name="signin_btn">تسجيل الدخول</string>
+    <string name="skip">تجاوز</string>
+    <string name="tutorial_header_1">هل تحتاج لمساعدتنا!</string>
+    <string name="tutorial_description_1">اتصل بنا!</string>
+    <string name="login_continue">تجاوز التسجيل</string>
 </resources>

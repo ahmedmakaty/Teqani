@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="دخول"
+            android:text="@string/signin"
             android:textColor="@color/gray"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -41,9 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="جديد"
+            android:text="@string/new_user"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
 
@@ -120,7 +120,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="90dp"
         android:paddingBottom="8dp"
-        android:text="تسجيل الدخول"
+        android:text="@string/signin_btn"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp" />
