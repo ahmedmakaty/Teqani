@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Sign In"
+            android:text="دخول"
             android:textColor="@color/gray"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="New User"
+            android:text="جديد"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -120,7 +120,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="90dp"
         android:paddingBottom="8dp"
-        android:text="Register"
+        android:text="تسجيل الدخول"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp" />
