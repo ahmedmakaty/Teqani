@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.teqani.base.presentation.screens.TutorialScreen.TutorialActivity"></activity>
+        <activity android:name="com.example.teqani.base.presentation.screens.SignInScreen.SignInActivity"></activity>
     </application>
 
 </manifest>
