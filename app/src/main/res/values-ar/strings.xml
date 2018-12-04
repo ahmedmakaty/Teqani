@@ -10,4 +10,7 @@
     <string name="tutorial_header_1">هل تحتاج لمساعدتنا!</string>
     <string name="tutorial_description_1">اتصل بنا!</string>
     <string name="login_continue">تجاوز التسجيل</string>
+    <string name="pin_header">رمز التحقق</string>
+    <string name="resend_label">اعادة ارسال رمز الدخول</string>
+    <string name="verify_btn">تفعيل</string>
 </resources>

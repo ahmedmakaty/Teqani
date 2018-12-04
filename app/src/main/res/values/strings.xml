@@ -11,4 +11,7 @@
     <string name="tutorial_header_1">Your device needs out help!</string>
     <string name="tutorial_description_1">Call us please, we beg you</string>
     <string name="default_Country">SA</string>
+    <string name="pin_header">Verification Code</string>
+    <string name="resend_label">Resend Code</string>
+    <string name="verify_btn">Verify</string>
 </resources>
