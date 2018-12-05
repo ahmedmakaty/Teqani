@@ -1,5 +1,6 @@
 package com.example.teqani.base.presentation.screens.TutorialScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.teqani.base.R;
 import com.example.teqani.base.presentation.BaseFragment;
+import com.example.teqani.base.presentation.screens.SignInScreen.SignInActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +25,8 @@ public class TutorialFragment extends BaseFragment {
     ViewPager tutorial;
     @BindView(R.id.indicator_container)
     LinearLayout indicator;
+    @BindView(R.id.skip)
+    TextView skip;
 
     TutorialPagerAdapter tutorialPagerAdapter;
 
@@ -70,6 +75,11 @@ public class TutorialFragment extends BaseFragment {
             public void onPageScrollStateChanged(int state) {
 
             }
+        });
+
+        skip.setOnClickListener((View v) -> {
+            Intent intent = new Intent(getContext(), SignInActivity.class);
+            startActivity(intent);
         });
 
         return view;
