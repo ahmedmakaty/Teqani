@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.teqani.base.R;
 import com.example.teqani.base.presentation.BaseFragment;
@@ -18,6 +20,8 @@ public class TutorialFragment extends BaseFragment {
 
     @BindView(R.id.view_pager)
     ViewPager tutorial;
+    @BindView(R.id.indicator_container)
+    LinearLayout indicator;
 
     TutorialPagerAdapter tutorialPagerAdapter;
 
@@ -40,6 +44,33 @@ public class TutorialFragment extends BaseFragment {
         tutorialPagerAdapter = new TutorialPagerAdapter(getChildFragmentManager());
 
         tutorial.setAdapter(tutorialPagerAdapter);
+
+        tutorial.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                indicator.removeAllViews();
+                for (int i = 0; i < tutorialPagerAdapter.getCount(); i++) {
+                    if (i == position) {
+                        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                        View view = layoutInflater.inflate(R.layout.oval_selected, indicator);
+                    } else {
+                        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                        View view = layoutInflater.inflate(R.layout.oval_not_selected, indicator);
+                        //indicator.addView(view);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         return view;
     }
