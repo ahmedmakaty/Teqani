@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.teqani.base.App"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.teqani.base.presentation.screens.SplashScreen.SplashActivity"
+            android:name=".presentation.screens.SplashScreen.SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.teqani.base.presentation.screens.TutorialScreen.TutorialActivity"
-            android:noHistory="true"></activity>
-        <activity android:name="com.example.teqani.base.presentation.screens.SignInScreen.SignInActivity"></activity>
-        <activity android:name="com.example.teqani.base.presentation.screens.RegisterScreen.RegisterActivity"></activity>
-        <activity android:name="com.example.teqani.base.presentation.screens.VerificationScreen.VerificationActivity"></activity>
+            android:name=".presentation.screens.TutorialScreen.TutorialActivity"
+            android:noHistory="true" />
+        <activity android:name=".presentation.screens.SignInScreen.SignInActivity" />
+        <activity android:name=".presentation.screens.RegisterScreen.RegisterActivity" />
+        <activity android:name=".presentation.screens.VerificationScreen.VerificationActivity" />
+        <activity
+            android:name=".presentation.screens.HomeScreen.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
