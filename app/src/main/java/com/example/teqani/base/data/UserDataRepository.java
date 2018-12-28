@@ -2,10 +2,16 @@ package com.example.teqani.base.data;
 
 
 import com.example.teqani.base.data.cache.user.UserCache;
+import com.example.teqani.base.data.model.RegisterResponse;
 import com.example.teqani.base.data.remote.user.UserRemote;
 import com.example.teqani.base.domain.repository.UserRepository;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
+
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
 
 public class UserDataRepository implements UserRepository {
 
@@ -18,4 +24,18 @@ public class UserDataRepository implements UserRepository {
         this.userRemote = userRemote;
     }
 
+    @Override
+    public Flowable<? extends RegisterResponse> register(HashMap<String, String> params) {
+        return userRemote.register(params);
+    }
+
+    @Override
+    public Completable verifyToken(String s) {
+        return userRemote.verify(s);
+    }
+
+    @Override
+    public Completable login(String s) {
+        return userRemote.login(s);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.teqani.base.injection.module;
 
+import com.example.teqani.base.data.Constants;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,15 +26,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkModule {
 
-    private static final String API_URL = "API_URL";
-
-    @Inject
-    @Named(API_URL)
-    String baseUrl;
+    @Provides
+    HttpLoggingInterceptor providesHttpLoggingInterceptor() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        return interceptor;
+    }
 
     @Provides
-    public HttpLoggingInterceptor providesHttpLoggingInterceptor() {
-        return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+    @Singleton
+    static Retrofit provideApi(Gson gson, OkHttpClient client) {
+        return new Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .baseUrl(Constants.BASE_URL)
+                .build();
     }
 
     @Provides
@@ -51,16 +58,6 @@ public class NetworkModule {
                 .addNetworkInterceptor(httpLoggingInterceptor)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .build();
-    }
-
-    @Provides
-    @Singleton
-    static Retrofit provideApi(@Named(API_URL) String baseUrl, Gson gson, OkHttpClient client) {
-        return new Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client)
-                .baseUrl(baseUrl)
                 .build();
     }
 }

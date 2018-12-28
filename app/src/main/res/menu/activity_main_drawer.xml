@@ -5,35 +5,56 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_nav_main"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_main" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_nav_orders"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_orders" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/ic_nav_fav"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_fav" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+            android:id="@+id/nav_points"
+            android:icon="@drawable/ic_nav_points"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_points" />
+        <item
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/ic_nav_offers"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_offers" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_nav_about"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_about" />
 
-    <item android:title="Communicate"
-        >
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_nav_share"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_share" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_nav_contact"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_contact" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_nav_settings"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_settings" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_nav_logout"
+            android:iconTint="@color/colorAccent"
+            android:title="@string/nav_title_logout" />
+    </group>
 
 </menu>

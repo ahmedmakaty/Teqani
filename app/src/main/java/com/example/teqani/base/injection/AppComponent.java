@@ -3,6 +3,7 @@ package com.example.teqani.base.injection;
 import android.app.Application;
 
 import com.example.teqani.base.App;
+import com.example.teqani.base.injection.module.AppModule;
 import com.example.teqani.base.injection.module.FragmentBindingModule;
 import com.example.teqani.base.injection.module.NetworkModule;
 import com.example.teqani.base.injection.module.data.UserDataModule;
@@ -16,6 +17,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {NetworkModule.class,
         UserDataModule.class,
+        AppModule.class,
         AndroidSupportInjectionModule.class,
         FragmentBindingModule.class})
 public interface AppComponent {

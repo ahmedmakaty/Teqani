@@ -1,5 +1,6 @@
 package com.example.teqani.base.presentation.screens.VerificationScreen;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,9 +18,13 @@ import android.widget.Toast;
 import com.example.teqani.base.R;
 import com.example.teqani.base.presentation.BaseFragment;
 import com.example.teqani.base.presentation.screens.HomeScreen.MainActivity;
+import com.wang.avi.AVLoadingIndicatorView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.support.AndroidSupportInjection;
 
 public class VerificationFragment extends BaseFragment {
 
@@ -35,6 +40,13 @@ public class VerificationFragment extends BaseFragment {
     LinearLayout pin;
     @BindView(R.id.verify_btn)
     TextView verify;
+    @BindView(R.id.progress)
+    AVLoadingIndicatorView progress;
+
+    VerificationViewModel verificationViewModel;
+
+    @Inject
+    VerificationViewModelFactory verificationViewModelFactory;
 
     public static VerificationFragment newInstance() {
 
@@ -43,6 +55,39 @@ public class VerificationFragment extends BaseFragment {
         VerificationFragment fragment = new VerificationFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        AndroidSupportInjection.inject(this);
+
+        verificationViewModel = ViewModelProviders.of(this, verificationViewModelFactory).get(VerificationViewModel.class);
+
+        initLiveObservers();
+    }
+
+    private void initLiveObservers() {
+        verificationViewModel.emptyErrorSLD.observe(this, this::onError);
+        verificationViewModel.successSLD.observe(this, this::onSuccess);
+        verificationViewModel.progressSLD.observe(this, this::showProgress);
+    }
+
+    private void onSuccess(Boolean aBoolean) {
+        Intent i = new Intent(getContext(), MainActivity.class);
+        startActivity(i);
+    }
+    private void showProgress(Boolean show) {
+        if (show) {
+            progress.setVisibility(View.VISIBLE);
+        } else {
+            progress.setVisibility(View.GONE);
+        }
+    }
+
+    private void onError(Boolean aBoolean) {
+        Toast.makeText(getContext(), R.string.verify_field_empty, Toast.LENGTH_SHORT).show();
     }
 
     @Nullable
@@ -138,8 +183,7 @@ public class VerificationFragment extends BaseFragment {
         });
 
         verify.setOnClickListener((View v) -> {
-            Intent i = new Intent(getContext(), MainActivity.class);
-            startActivity(i);
+            verificationViewModel.verify(pin1.getText().toString() + pin2.getText().toString() + pin3.getText().toString() + pin4.getText().toString());
         });
     }
 }

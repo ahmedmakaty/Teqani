@@ -109,5 +109,16 @@
         android:textSize="16sp"
         android:textColor="@color/gray_light" />
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        style="@style/AVLoadingIndicatorView"
+        App:indicatorColor="#FFF"
+        App:indicatorName="BallClipRotateIndicator"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 
 </RelativeLayout>

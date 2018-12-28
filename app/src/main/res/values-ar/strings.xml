@@ -13,4 +13,18 @@
     <string name="pin_header">رمز التحقق</string>
     <string name="resend_label">اعادة ارسال رمز الدخول</string>
     <string name="verify_btn">تفعيل</string>
+    <string name="verify_field_empty">ادخل رمز التحقق</string>
+    <string name="name_field_empty">رجاء ادخال الاسم</string>
+    <string name="phone_field_empty">رجاء ادخال رقم الجوال</string>
+    <string name="both_fields_empty">رجاء ادخال الاسم و رقم الجوال</string>
+    <string name="nav_title_main">الرئيسية</string>
+    <string name="nav_title_orders">طلباتى</string>
+    <string name="nav_title_fav">الفنيين المفضلين</string>
+    <string name="nav_title_points">نقاطى</string>
+    <string name="nav_title_offers">العروض</string>
+    <string name="nav_title_about">عن التطبيق</string>
+    <string name="nav_title_share">انشر التطبيق</string>
+    <string name="nav_title_contact">تواصل معنا</string>
+    <string name="nav_title_settings">الاعدادات</string>
+    <string name="nav_title_logout">تسجيل الخروج</string>
 </resources>
