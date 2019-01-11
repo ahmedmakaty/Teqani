@@ -4,10 +4,12 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.example.teqani.base.data.model.LoginBodyModel;
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.domain.interactor.userUseCases.SignInUseCase;
 import com.example.teqani.base.domain.interactor.userUseCases.VerifyUseCase;
 
 import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public class VerificationViewModel extends ViewModel {
 
@@ -43,16 +45,22 @@ public class VerificationViewModel extends ViewModel {
             params.setPin(pin);
             params.setPhone(phone);
 
-            signInUseCase.execute(new DisposableCompletableObserver() {
+
+            signInUseCase.execute(new DisposableSubscriber<LoginResponse>() {
                 @Override
-                public void onComplete() {
+                public void onNext(LoginResponse loginResponse) {
                     progressSLD.postValue(false);
                     successSLD.postValue(true);
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable t) {
                     progressSLD.postValue(false);
+                }
+
+                @Override
+                public void onComplete() {
+
                 }
             }, params);
         }

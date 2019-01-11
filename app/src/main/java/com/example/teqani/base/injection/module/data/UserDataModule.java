@@ -1,6 +1,7 @@
 package com.example.teqani.base.injection.module.data;
 
 import com.example.teqani.base.data.UserDataRepository;
+import com.example.teqani.base.data.cache.helper.ComplexPreferences;
 import com.example.teqani.base.data.cache.user.UserCache;
 import com.example.teqani.base.data.cache.user.UserCacheImp;
 import com.example.teqani.base.data.remote.ApiServiceInterface;
@@ -20,8 +21,8 @@ public class UserDataModule {
     }
 
     @Provides
-    UserCache providesUserCache() {
-        return new UserCacheImp();
+    UserCache providesUserCache(ComplexPreferences complexPreferences) {
+        return new UserCacheImp(complexPreferences);
     }
 
     @Provides

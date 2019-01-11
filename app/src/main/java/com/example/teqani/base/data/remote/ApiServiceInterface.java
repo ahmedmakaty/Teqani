@@ -1,5 +1,6 @@
 package com.example.teqani.base.data.remote;
 
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.data.model.RegisterResponse;
 
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public interface ApiServiceInterface {
     Completable verify(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
 
     @POST("users/login")
-    Completable login(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
+    Flowable<LoginResponse> login(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
 
     @POST("users/oneTimePassword")
     Completable generateOTP(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);

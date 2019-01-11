@@ -1,18 +1,21 @@
 package com.example.teqani.base.domain.interactor.userUseCases;
 
 import com.example.teqani.base.data.model.LoginBodyModel;
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.domain.exception.NoInternetConnectionException;
 import com.example.teqani.base.domain.executer.PostExecutionThread;
 import com.example.teqani.base.domain.executer.ThreadExecutor;
 import com.example.teqani.base.domain.helper.CompletableUseCase;
+import com.example.teqani.base.domain.helper.FlowableUseCase;
 import com.example.teqani.base.domain.interactor.InternetConnectionUseCase;
 import com.example.teqani.base.domain.repository.UserRepository;
 
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 
-public class SignInUseCase extends CompletableUseCase<LoginBodyModel> {
+public class SignInUseCase extends FlowableUseCase<LoginResponse, LoginBodyModel> {
 
     InternetConnectionUseCase internetConnectionUseCase;
     UserRepository userRepository;
@@ -26,12 +29,16 @@ public class SignInUseCase extends CompletableUseCase<LoginBodyModel> {
 
 
     @Override
-    protected Completable buildUseCaseObservable(LoginBodyModel s) {
-        return internetConnectionUseCase.buildUseCaseObservable(null).flatMapCompletable(status -> {
+    protected Flowable<LoginResponse> buildUseCaseObservable(LoginBodyModel s) {
+        return internetConnectionUseCase.buildUseCaseObservable(null).switchMap(status -> {
             if (status) {
-                return userRepository.login(s);
+                return userRepository.login(s).switchMap(response -> {
+                    userRepository.saveUser(response);
+                    return Flowable.just(response);
+                });
+                //return userRepository.login(s);
             } else {
-                return Completable.error(new NoInternetConnectionException());
+                return Flowable.error(new NoInternetConnectionException());
             }
         });
     }

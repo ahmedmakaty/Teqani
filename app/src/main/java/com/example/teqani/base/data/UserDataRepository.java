@@ -3,6 +3,7 @@ package com.example.teqani.base.data;
 
 import com.example.teqani.base.data.cache.user.UserCache;
 import com.example.teqani.base.data.model.LoginBodyModel;
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.data.model.RegisterResponse;
 import com.example.teqani.base.data.remote.user.UserRemote;
 import com.example.teqani.base.domain.repository.UserRepository;
@@ -36,12 +37,22 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public Completable login(LoginBodyModel s) {
+    public Flowable<LoginResponse> login(LoginBodyModel s) {
         return userRemote.login(s);
     }
 
     @Override
     public Completable generateOTP(String s) {
         return userRemote.generateOTP(s);
+    }
+
+    @Override
+    public void saveUser(LoginResponse user) {
+        userCache.saveUser(user);
+    }
+
+    @Override
+    public LoginResponse getUser() {
+        return userCache.getUser();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.teqani.base.presentation.screens.HomeScreen;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,17 +14,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.teqani.base.R;
 import com.example.teqani.base.helper.LocaleHelper;
 
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import dagger.android.AndroidInjection;
+import dagger.android.support.AndroidSupportInjection;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView name;
+    TextView userPhone;
+
+    MainViewModel mainViewModel;
+
+    @Inject
+    MainViewModelFactory mainViewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AndroidInjection.inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.app_name);
@@ -36,8 +55,17 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        name = headerView.findViewById(R.id.user_name);
+        userPhone = headerView.findViewById(R.id.user_phone);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel.class);
+
+        mainViewModel.getUser();
+
+        initLiveObservers();
 
         LocaleHelper l = LocaleHelper.getInstance(getBaseContext());
         String country = getString(R.string.default_Country);
@@ -49,6 +77,15 @@ public class MainActivity extends AppCompatActivity
         } else {
             LocaleHelper.ChangeDesignToLTR(this);
         }
+    }
+
+    private void initLiveObservers() {
+        mainViewModel.userReadySLD.observe(this, this::onUserReady);
+    }
+
+    private void onUserReady(Boolean aBoolean) {
+        name.setText(mainViewModel.getLoginResponse().getPlainUser().getName());
+        userPhone.setText(mainViewModel.getLoginResponse().getPlainUser().getUsername());
     }
 
     @Override

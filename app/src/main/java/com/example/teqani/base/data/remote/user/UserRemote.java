@@ -1,6 +1,7 @@
 package com.example.teqani.base.data.remote.user;
 
 import com.example.teqani.base.data.model.LoginBodyModel;
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.data.model.RegisterResponse;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public interface UserRemote {
 
     Completable verify(String s);
 
-    Completable login(LoginBodyModel s);
+    Flowable<LoginResponse> login(LoginBodyModel s);
 
     Completable generateOTP(String s);
 }

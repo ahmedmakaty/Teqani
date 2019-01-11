@@ -1,6 +1,7 @@
 package com.example.teqani.base.domain.repository;
 
 import com.example.teqani.base.data.model.LoginBodyModel;
+import com.example.teqani.base.data.model.LoginResponse;
 import com.example.teqani.base.data.model.RegisterResponse;
 
 import org.reactivestreams.Publisher;
@@ -17,7 +18,11 @@ public interface UserRepository {
 
     Completable verifyToken(String s);
 
-    Completable login(LoginBodyModel s);
+    Flowable<LoginResponse> login(LoginBodyModel s);
 
     Completable generateOTP(String s);
+
+    void saveUser(LoginResponse response);
+
+    LoginResponse getUser();
 }

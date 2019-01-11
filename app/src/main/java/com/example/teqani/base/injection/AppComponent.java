@@ -3,6 +3,7 @@ package com.example.teqani.base.injection;
 import android.app.Application;
 
 import com.example.teqani.base.App;
+import com.example.teqani.base.injection.module.ActivityBindingModule;
 import com.example.teqani.base.injection.module.AppModule;
 import com.example.teqani.base.injection.module.FragmentBindingModule;
 import com.example.teqani.base.injection.module.NetworkModule;
@@ -19,8 +20,11 @@ import dagger.android.support.AndroidSupportInjectionModule;
         UserDataModule.class,
         AppModule.class,
         AndroidSupportInjectionModule.class,
-        FragmentBindingModule.class})
+        FragmentBindingModule.class,
+        ActivityBindingModule.class})
 public interface AppComponent {
+
+    void inject(App app);
 
     @Component.Builder
     interface Builder {
@@ -29,6 +33,4 @@ public interface AppComponent {
 
         AppComponent build();
     }
-
-    void inject(App app);
 }

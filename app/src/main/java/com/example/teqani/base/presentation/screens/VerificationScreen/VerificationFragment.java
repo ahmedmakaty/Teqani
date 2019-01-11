@@ -81,6 +81,7 @@ public class VerificationFragment extends BaseFragment {
         Intent i = new Intent(getContext(), MainActivity.class);
         startActivity(i);
     }
+
     private void showProgress(Boolean show) {
         if (show) {
             progress.setVisibility(View.VISIBLE);
