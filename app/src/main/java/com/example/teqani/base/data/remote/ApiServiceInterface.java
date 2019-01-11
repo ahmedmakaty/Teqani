@@ -16,15 +16,18 @@ import retrofit2.http.Query;
 public interface ApiServiceInterface {
 
 
-    @POST("/users/customerSignUp")
+    @POST("users/customerSignUp")
     Flowable<RegisterResponse> register(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
 
-    @POST("/users/oneTimePassword")
+    @POST("users/oneTimePassword")
     Completable verify(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
 
-    @POST("/users/login")
+    @POST("users/login")
     Completable login(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
 
-    @GET("/api/PaymentMethod/GetPaymentMethods")
+    @POST("users/oneTimePassword")
+    Completable generateOTP(@HeaderMap Map<String, String> headers, @Body HashMap<String, String> body);
+
+    @GET("PaymentMethod/GetPaymentMethods")
     Flowable<String> getPaymentMethods(@HeaderMap Map<String, String> headers, @Query("countryid") String countryId, @Query("languageId") String languageId);
 }

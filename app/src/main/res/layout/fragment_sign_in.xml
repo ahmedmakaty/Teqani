@@ -67,6 +67,7 @@
             android:drawableStart="@drawable/ic_mobile"
             android:drawablePadding="12dp"
             android:gravity="start"
+            android:paddingTop="20dp"
             android:hint="@string/hint_mobile"
             android:textColor="@color/white"
             android:paddingBottom="18dp"

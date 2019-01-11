@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.teqani.base.R;
+import com.example.teqani.base.data.Constants;
 import com.example.teqani.base.presentation.BaseFragment;
+import com.example.teqani.base.presentation.screens.SignInScreen.SignInActivity;
 import com.example.teqani.base.presentation.screens.VerificationScreen.VerificationActivity;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -67,6 +69,7 @@ public class RegisterFragment extends BaseFragment {
 
     private void onSuccess(Boolean aBoolean) {
         Intent intent = new Intent(getContext(), VerificationActivity.class);
+        intent.putExtra(Constants.PHONE_NUMBER, phone.getText().toString());
         startActivity(intent);
     }
 
@@ -114,4 +117,12 @@ public class RegisterFragment extends BaseFragment {
     public void register() {
         registerViewModel.register(name.getText().toString(), phone.getText().toString());
     }
+
+    @OnClick(R.id.signin_label)
+    public void goToSignIn() {
+        Intent i = new Intent(getContext(), SignInActivity.class);
+        startActivity(i);
+    }
+
+
 }

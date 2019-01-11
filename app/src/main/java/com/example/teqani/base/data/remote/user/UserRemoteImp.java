@@ -1,5 +1,6 @@
 package com.example.teqani.base.data.remote.user;
 
+import com.example.teqani.base.data.model.LoginBodyModel;
 import com.example.teqani.base.data.model.RegisterResponse;
 import com.example.teqani.base.data.remote.ApiServiceInterface;
 import com.example.teqani.base.data.remote.helper.HeadersHelper;
@@ -33,9 +34,17 @@ public class UserRemoteImp implements UserRemote {
     }
 
     @Override
-    public Completable login(String s) {
+    public Completable login(LoginBodyModel s) {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("username", s.getPhone());
+        params.put("password", s.getPin());
+        return apiServiceInterface.login(HeadersHelper.getHeaders(), params);
+    }
+
+    @Override
+    public Completable generateOTP(String s) {
         HashMap<String, String> params = new HashMap<>();
         params.put("username", s);
-        return apiServiceInterface.login(HeadersHelper.getHeaders(), params);
+        return apiServiceInterface.generateOTP(HeadersHelper.getHeaders(), params);
     }
 }

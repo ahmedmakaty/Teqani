@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.teqani.base.R;
+import com.example.teqani.base.data.Constants;
 import com.example.teqani.base.presentation.BaseFragment;
 import com.example.teqani.base.presentation.screens.HomeScreen.MainActivity;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -48,11 +49,12 @@ public class VerificationFragment extends BaseFragment {
     @Inject
     VerificationViewModelFactory verificationViewModelFactory;
 
-    public static VerificationFragment newInstance() {
+    public static VerificationFragment newInstance(String phone) {
 
         Bundle args = new Bundle();
 
         VerificationFragment fragment = new VerificationFragment();
+        args.putString(Constants.PHONE_NUMBER, phone);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,6 +67,7 @@ public class VerificationFragment extends BaseFragment {
 
         verificationViewModel = ViewModelProviders.of(this, verificationViewModelFactory).get(VerificationViewModel.class);
 
+        verificationViewModel.setPhoneNumber(getArguments().getString(Constants.PHONE_NUMBER, ""));
         initLiveObservers();
     }
 
@@ -172,8 +175,7 @@ public class VerificationFragment extends BaseFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (count > 0)
-                    Toast.makeText(getContext(), "Got it!", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -183,7 +185,7 @@ public class VerificationFragment extends BaseFragment {
         });
 
         verify.setOnClickListener((View v) -> {
-            verificationViewModel.verify(pin1.getText().toString() + pin2.getText().toString() + pin3.getText().toString() + pin4.getText().toString());
+            verificationViewModel.verify(pin1.getText().toString() + pin2.getText().toString() + pin3.getText().toString() + pin4.getText().toString(), verificationViewModel.getPhoneNumber());
         });
     }
 }

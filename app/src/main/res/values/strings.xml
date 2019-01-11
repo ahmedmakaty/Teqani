@@ -24,6 +24,7 @@
     <string name="verify_field_empty">Please, enter a valid token</string>
     <string name="name_field_empty">Name can not be empty</string>
     <string name="phone_field_empty">Phone can not be empty</string>
+    <string name="no_internet">No Internet connection</string>
     <string name="both_fields_empty">Please, enter your credentials</string>
     <string name="nav_title_main">Main</string>
     <string name="nav_title_orders">Orders</string>

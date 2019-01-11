@@ -7,8 +7,8 @@
     <string name="new_user">جديد</string>
     <string name="signin_btn">تسجيل الدخول</string>
     <string name="skip">تجاوز</string>
-    <string name="tutorial_header_1">هل تحتاج لمساعدتنا!</string>
-    <string name="tutorial_description_1">اتصل بنا!</string>
+    <string name="tutorial_header_1">جهازك يحتاج صيانة!</string>
+    <string name="tutorial_description_1">نقدم لك الحل ببساطة! \n اخبرنا نوع المشكلة التى تواجهها و سيتم ارسالها لفنيين محترفين متخصصين لصيانة جهازك</string>
     <string name="login_continue">تجاوز التسجيل</string>
     <string name="pin_header">رمز التحقق</string>
     <string name="resend_label">اعادة ارسال رمز الدخول</string>
@@ -27,4 +27,5 @@
     <string name="nav_title_contact">تواصل معنا</string>
     <string name="nav_title_settings">الاعدادات</string>
     <string name="nav_title_logout">تسجيل الخروج</string>
+    <string name="no_internet">لا يوجد اتصال بالشبكة</string>
 </resources>

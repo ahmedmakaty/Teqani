@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.teqani.base.R;
+import com.example.teqani.base.data.Constants;
 import com.example.teqani.base.presentation.BaseFragment;
 import com.example.teqani.base.presentation.screens.HomeScreen.MainActivity;
 import com.example.teqani.base.presentation.screens.RegisterScreen.RegisterActivity;
@@ -67,12 +68,23 @@ public class SignInFragment extends BaseFragment {
 
     private void initLiveObservers() {
         signInViewModel.progressSLD.observe(this, this::showProgress);
+        signInViewModel.apiErrorSLD.observe(this, this::showErrorMessage);
+        signInViewModel.noInternetConnectionSLD.observe(this, this::showNoInternetMessage);
         signInViewModel.emptyErrorSLD.observe(this, this::showError);
         signInViewModel.successSLD.observe(this, this::onSuccess);
     }
 
+    private void showNoInternetMessage(Boolean aBoolean) {
+        Toast.makeText(getContext(), R.string.no_internet, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showErrorMessage(String s) {
+        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
     private void onSuccess(Boolean aBoolean) {
         Intent intent = new Intent(getContext(), VerificationActivity.class);
+        intent.putExtra(Constants.PHONE_NUMBER, mobile.getText().toString());
         startActivity(intent);
     }
 

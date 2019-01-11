@@ -25,9 +25,15 @@
         <activity
             android:name=".presentation.screens.TutorialScreen.TutorialActivity"
             android:noHistory="true" />
-        <activity android:name=".presentation.screens.SignInScreen.SignInActivity" />
-        <activity android:name=".presentation.screens.RegisterScreen.RegisterActivity" />
-        <activity android:name=".presentation.screens.VerificationScreen.VerificationActivity" />
+        <activity
+            android:name=".presentation.screens.SignInScreen.SignInActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".presentation.screens.RegisterScreen.RegisterActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".presentation.screens.VerificationScreen.VerificationActivity"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".presentation.screens.HomeScreen.MainActivity"
             android:label="@string/title_activity_main"
