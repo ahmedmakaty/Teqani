@@ -28,4 +28,9 @@
     <string name="nav_title_settings">الاعدادات</string>
     <string name="nav_title_logout">تسجيل الخروج</string>
     <string name="no_internet">لا يوجد اتصال بالشبكة</string>
+    <string name="home_title">اختر نوع الجهاز</string>
+    <string name="home_phones">جوالات و أجهزة لوحية</string>
+    <string name="home_laptops">لابتوب و اجهزة مكتبية</string>
+    <string name="home_networks">شبكات</string>
+    <string name="home_cameras">كاميرات مراقبة</string>
 </resources>
