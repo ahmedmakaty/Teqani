@@ -4,10 +4,12 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.example.teqani.base.data.model.RegisterResponse;
+import com.example.teqani.base.domain.interactor.userUseCases.GenerateOTPUseCase;
 import com.example.teqani.base.domain.interactor.userUseCases.RegisterUseCase;
 
 import java.util.HashMap;
 
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.subscribers.DisposableSubscriber;
 
 public class RegisterViewModel extends ViewModel {
@@ -18,9 +20,11 @@ public class RegisterViewModel extends ViewModel {
     RegisterError registerError = RegisterError.EMPTY_BOTH;
 
     RegisterUseCase registerUseCase;
+    GenerateOTPUseCase generateOTPUseCase;
 
-    public RegisterViewModel(RegisterUseCase registerUseCase) {
+    public RegisterViewModel(RegisterUseCase registerUseCase, GenerateOTPUseCase generateOTPUseCase) {
         this.registerUseCase = registerUseCase;
+        this.generateOTPUseCase = generateOTPUseCase;
     }
 
     public void register(String name, String phone) {
@@ -45,12 +49,24 @@ public class RegisterViewModel extends ViewModel {
             registerUseCase.execute(new DisposableSubscriber<RegisterResponse>() {
                 @Override
                 public void onNext(RegisterResponse registerResponse) {
-                    successSLD.postValue(true);
+
+                    generateOTPUseCase.execute(new DisposableCompletableObserver() {
+                        @Override
+                        public void onComplete() {
+                            successSLD.postValue(true);
+                            progressSLD.postValue(false);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            progressSLD.postValue(false);
+                        }
+                    }, phone);
                 }
 
                 @Override
                 public void onError(Throwable t) {
-
+                    progressSLD.postValue(false);
                 }
 
                 @Override
