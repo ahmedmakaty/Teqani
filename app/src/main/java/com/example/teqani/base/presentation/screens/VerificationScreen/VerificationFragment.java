@@ -131,6 +131,7 @@ public class VerificationFragment extends BaseFragment {
             @Override
             public void afterTextChanged(Editable s) {
 
+
             }
         });
 
@@ -147,7 +148,8 @@ public class VerificationFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (s.length()==0)
+                    pin1.requestFocus();
             }
         });
 
@@ -164,7 +166,8 @@ public class VerificationFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (s.length()==0)
+                    pin2.requestFocus();
             }
         });
 
@@ -181,7 +184,8 @@ public class VerificationFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (s.length()==0)
+                    pin3.requestFocus();
             }
         });
 
